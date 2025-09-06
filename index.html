@@ -2,10 +2,272 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>主页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>system:error</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'MyCustomFont';
+            src: url('/fonts/1.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'MyCustomFont', 'Segoe UI', 'Arial', sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #6e8efb, #a777e3), url('/1.png') no-repeat center center fixed;
+            background-size: cover;
+            background-blend-mode: overlay;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+            max-width: 850px;
+            padding: 20px;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 50px 70px;
+            text-align: center;
+            color: #222;
+            width: 100%;
+            transition: all 0.3s ease;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.45);
+        }
+        
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .avatar:hover {
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        h1 {
+            margin: 0 0 15px 0;
+            font-size: 2.4em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #29282b;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        h2 {
+            margin: 0 0 20px 0;
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #2c2b2e;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        p {
+            margin: 0 0 25px 0;
+            font-size: 1.2em;
+            color: #43484b;
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            color: #515258;
+            font-weight: 600;
+        }
+        
+        .links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .links a {
+            display: inline-flex;
+            align-items: center;
+            margin: 0 8px;
+            padding: 12px 25px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.25);
+            color: #575264;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .links a i {
+            margin-right: 8px;
+        }
+        
+        .links a:hover {
+            background: rgba(112, 104, 104, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .skills {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .skill-tag {
+            padding: 8px 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            font-size: 0.9em;
+            border: 1px solid rgba(90, 91, 102, 0.2);
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .glass-card {
+                padding: 30px 40px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.6em;
+            }
+            
+            p {
+                font-size: 1.1em;
+            }
+            
+            .links a {
+                padding: 10px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .glass-card {
+                padding: 25px 30px;
+            }
+            
+            .avatar {
+                width: 100px;
+                height: 100px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            h2 {
+                font-size: 1.4em;
+            }
+            
+            p {
+                font-size: 1em;
+            }
+            
+            .links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .links a {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
 </head>
 <body>
+    <div class="container">
+        <div class="glass-card">
+            <img class="avatar" src="https://blog.yizhixiaozhu.top/images/1.png" alt="头像">
+            <h1>system:error</h1>
+            <p>前端开发者 | 学生 </p>
+            <p id="hitokoto">
+            <a href="#" id="hitokoto_text">:D 获取中...</a>
+            </p>
+            <div class="links">
+                <a href="mailto:3103232089@qq.com"><i class="fas fa-envelope"></i> 邮箱</a>
+                <a href="https://space.bilibili.com/1126700046"><i class="fab fa-bilibili"></i> Bilibili</a>
+                <a href="https://blog.yizhixiaozhu.top"><i class="fas fa-blog"></i> 博客</a>
+                <a href="https://github.com"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+        
+        <div class="glass-card">
+            <h2>关于我</h2>
+            <p>大家好，我是 <span class="highlight">system:error</span>，是一名初三的学生，虽然能力不够，但是仍然在学习</p>
+            
+            <p>我相信总有一天会成为自己想成为的人！</p>
 
+            <h3>技术栈</h3>
+            <div class="skills">
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Vue.js</span>
+                <span class="skill-tag">Dart</span>
+                <span class="skill-tag">Python</span>
+            </div>
+            
+
+            </div>
+        </div>
+
+    <script>
+        // 添加卡片加载动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.2}s`;
+            });
+        });
+    </script>
 </body>
 </html>
